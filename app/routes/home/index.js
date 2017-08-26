@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  beforeModel() {
-    this.replaceWith('home.landing');
+  model() {
+    return this.get('store').findAll('stock-summary');
   }
 });

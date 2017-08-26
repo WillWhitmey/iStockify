@@ -1,1 +1,17 @@
-Hi there
+{{#each stocks as |stock|}}
+  <div class="mdl-card mdl-shadow--4dp">
+    <div class="mdl-card__title">
+       <h2 class="mdl-card__title-text">{{stock.name}}</h2>
+    </div>
+    <div class="mdl-card__media">
+      <img src="{{stock.image}}" width="173" height="157" border="0" alt=""
+       style="padding:10px;">
+    </div>
+    <div class="mdl-card__supporting-text">
+      {{stock.price}}
+    </div>
+    <div class="mdl-card__actions">
+       <a href="http://en.wikipedia.org/wiki/Sky_Tower_%28Auckland%29">Wikipedia entry</a>
+    </div>
+  </div>
+{{/each}}
