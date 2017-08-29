@@ -1,0 +1,22 @@
+<div class="mdl-card mdl-shadow--4dp">
+  <div class="mdl-card__title">
+     <h2 class="mdl-card__title-text">Create a stock</h2>
+  </div>
+  <form {{action "createStock" on="submit"}}>
+    <div class="mdl-card__supporting-text">
+      <label for="name">Company Name:</label>
+      {{input value=name}}
+    </div>
+    <div class="mdl-card__supporting-text">
+      <label for="price">Company Price:</label>
+      {{input value=price}}
+    </div>
+    <div class="mdl-card__supporting-text">
+      <label for="image">Company Image:</label>
+      {{input value=image}}
+    </div>
+    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+      Submit
+    </button>
+  </form>
+</div>
