@@ -11,10 +11,9 @@
       {{stock.price}}
     </div>
     <div class="mdl-card__actions mdl-card--border">
-      <!-- <a href="" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+      {{#link-to "home.stock" stock class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"}}
         Full Display
-      </a> -->
-      {{#link-to "home.stock" stock}}Full Display{{/link-to}}
+      {{/link-to}}
     </div>
     <div class="mdl-card__menu">
       <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">

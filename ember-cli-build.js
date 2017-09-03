@@ -6,6 +6,10 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     // Add options here
+    emberHighCharts: {
+      includeHighCharts: false,
+      includeHighStock: true
+    }
   });
 
   app.import('bower_components/material-design-lite/material.min.css', {
