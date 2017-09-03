@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('home', function() {
     this.route('index', { path: '/' });
     this.route('create');
+    this.route('stock', { path: '/:stock_id'});
   });
 });
 
