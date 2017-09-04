@@ -10,7 +10,7 @@ export default Ember.Component.extend({
       let data = this.get('store').createRecord('purchase', {
         companyID: this.get('companyID'),
         price: this.get('price'),
-        time: this.get('time')
+        time: new Date().getTime()
       });
       data.save();
     }
