@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  stock: null,
 
   chartOptions: {
     chart: {
@@ -14,7 +13,7 @@ export default Ember.Component.extend({
                   var x = (new Date()).getTime(), // current time
                       y = Math.round(Math.random() * 300);
                   series.addPoint([x, y], true, true);
-              }, 1000);
+              }, 2000);
           }
       }
     },
@@ -37,10 +36,6 @@ export default Ember.Component.extend({
       }],
       selected: 0
     }
-  },
-
-  exporting: {
-      enabled: false
   },
 
   series: [{

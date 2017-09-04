@@ -1,0 +1,45 @@
+<div class="mdl-card mdl-shadow--4dp">
+  <div class="mdl-card__title">
+     <h2 class="mdl-card__title-text">{{stock.name}}</h2>
+  </div>
+  <div class="mdl-card__media">
+    <img src="{{stock.image}}" width="173" height="157" border="0" alt=""
+     style="padding:10px;">
+  </div>
+  <div class="mdl-card__supporting-text">
+    {{stock.price}}
+  </div>
+  <div class="mdl-card__supporting-text">
+    {{stock.id}}
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+  </div>
+  <div class="mdl-card__menu">
+    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+      <i class="material-icons">expand_more</i>
+    </button>
+  </div>
+</div>
+
+<div class="mdl-card mdl-shadow--4dp">
+  <div class="mdl-card__title">
+     <h2 class="mdl-card__title-text">Buy this stock</h2>
+  </div>
+  <form {{action "buyStock" on="submit"}}>
+    <div class="mdl-card__supporting-text">
+      <label for="name">Company Id:</label>
+      {{input value=companyID}}
+    </div>
+    <div class="mdl-card__supporting-text">
+      <label for="price">Company Price:</label>
+      {{input value=price}}
+    </div>
+    <div class="mdl-card__supporting-text">
+      <label for="price">Time:</label>
+      {{input value=time}}
+    </div>
+    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+      Submit
+    </button>
+  </form>
+</div>
