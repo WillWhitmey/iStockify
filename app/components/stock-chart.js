@@ -9,17 +9,6 @@ export default Ember.Component.extend({
   stock: null,
   prices: null,
 
-  // prices: computed('stock', function() {
-  //   return this.get('store').findRecord('price', this.get('stock.id')).then(data => {
-  //     console.log(data);
-  //   })
-  // }),
-
-  // init() {
-  //   this._super(...arguments);
-  //   prices: this.get('store').findRecord('price', this.get('stock.id'))
-  // },
-
   chartOptions: {
     chart: {
       events: {
@@ -56,12 +45,21 @@ export default Ember.Component.extend({
   },
 
   series: computed('prices', function() {
+    let data = this.get('prices').map(function (x) {
+      return x.toJSON();
+    })
+    .filter(function (props) {
+        delete props.companyID;
+        return true;
+    })
+    .map(function (data) {
+      return [data.time,data.price]
+    })
+    .sort( function(a,b) { return a[0] - b[0]; } );
+    console.log(data);
     return [{
       name: 'Random data',
-      data: [
-        [1283817600000,36.83],
-        [1283904000000,37.56]
-      ]
+      data: data
     }]
   })
 
