@@ -1,12 +1,29 @@
 import Ember from 'ember';
 
+const { inject, computed } = Ember;
+
 export default Ember.Component.extend({
+
+  store: inject.service(),
+
+  stock: null,
+  prices: null,
+
+  // prices: computed('stock', function() {
+  //   return this.get('store').findRecord('price', this.get('stock.id')).then(data => {
+  //     console.log(data);
+  //   })
+  // }),
+
+  // init() {
+  //   this._super(...arguments);
+  //   prices: this.get('store').findRecord('price', this.get('stock.id'))
+  // },
 
   chartOptions: {
     chart: {
       events: {
           load: function () {
-
               // set up the updating of the chart each second
               // var series = this.series[0];
               // setInterval(function () {
@@ -38,16 +55,26 @@ export default Ember.Component.extend({
     }
   },
 
-  series: [{
+  series: computed('prices', function() {
+    return [{
       name: 'Random data',
-      data: (function () {
-          // generate an array of random data
-          var data = [
-            [1283817600000,36.83],
-            [1283904000000,37.56]
-          ];
-          console.log(new Date().getTime());
-          return data;
-      }())
-  }]
+      data: [
+        [1283817600000,36.83],
+        [1283904000000,37.56]
+      ]
+    }]
+  })
+
+  // series: [{
+  //     name: 'Random data',
+  //     data: (function () {
+  //         // generate an array of random data
+  //         var data = [
+  //           [1283817600000,36.83],
+  //           [1283904000000,37.56]
+  //         ];
+  //         console.log(this.get('prices'));
+  //         return data;
+  //     }())
+  // }]
 });

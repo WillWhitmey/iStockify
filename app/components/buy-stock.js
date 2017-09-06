@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 
   actions: {
     buyStock() {
-      let data = this.get('store').createRecord('purchase', {
+      let data = this.get('store').createRecord('price', {
         companyID: this.get('companyID'),
         price: this.get('price'),
         time: new Date().getTime()

@@ -1,7 +1,12 @@
 import Ember from 'ember';
 
+const { RSVP } = Ember;
+
 export default Ember.Route.extend({
   model(params) {
-    return this.store.findRecord('stock', params.stock_id);
+    return RSVP.hash({
+      stock: this.store.findRecord('stock', params.stock_id),
+      prices: this.store.query('price', params.stock_id)
+    });
   }
 });
