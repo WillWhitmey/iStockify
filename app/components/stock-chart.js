@@ -48,15 +48,9 @@ export default Ember.Component.extend({
     let data = this.get('prices').map(function (x) {
       return x.toJSON();
     })
-    .filter(function (props) {
-        delete props.companyID;
-        return true;
-    })
     .map(function (data) {
       return [data.time,data.price]
     })
-    .sort( function(a,b) { return a[0] - b[0]; } );
-    console.log(data);
     return [{
       name: 'Random data',
       data: data
