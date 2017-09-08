@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { inject, computed } = Ember;
+const { inject, computed, $ } = Ember;
 
 export default Ember.Component.extend({
 
@@ -12,19 +12,29 @@ export default Ember.Component.extend({
   chartOptions: {
     chart: {
       events: {
-          load: function () {
-              // set up the updating of the chart each second
-              // var series = this.series[0];
-              // setInterval(function () {
-              //     var x = (new Date()).getTime(), // current time
-              //         y = Math.round(Math.random() * 300);
-              //     series.addPoint([x, y], true, true);
-              // }, 2000);
-          }
+        load: function () {
+          var series = this.series[0];
+          setInterval(function () {
+            $.ajax({
+              beforeSend: function(xhrObj){
+                xhrObj.setRequestHeader("Accept","application/json");
+              },
+              type: 'GET',
+              dataType: 'json',
+              url: `http://localhost:4567/stockSummaries/latestPrice/95f78b17-fdbc-4184-945c-6415a8634494/`,
+              success: function(point) {
+                let data = [point.prices[0].time, point.prices[0].price];
+                let lastPoint = [series.data.slice(-1).pop().x, series.data.slice(-1).pop().y];
+                data[0] === lastPoint[0] ? null : series.addPoint(data, true, true);
+              },
+              cache: false
+            })
+          }, 2000)
+        }
       }
     },
     title: {
-      text: 'Live random data'
+      text: 'Live Data'
     },
     rangeSelector: {
       enabled: true,
@@ -49,7 +59,7 @@ export default Ember.Component.extend({
       return x.toJSON();
     })
     .map(function (data) {
-      return [data.time,data.price]
+      return [data.time, data.price]
     })
     return [{
       name: 'Random data',
@@ -57,16 +67,4 @@ export default Ember.Component.extend({
     }]
   })
 
-  // series: [{
-  //     name: 'Random data',
-  //     data: (function () {
-  //         // generate an array of random data
-  //         var data = [
-  //           [1283817600000,36.83],
-  //           [1283904000000,37.56]
-  //         ];
-  //         console.log(this.get('prices'));
-  //         return data;
-  //     }())
-  // }]
 });
