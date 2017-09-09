@@ -50,7 +50,7 @@ export default Ember.Component.extend({
           type: 'all',
           text: 'All'
       }],
-      selected: 0
+      selected: 3
     }
   },
 
