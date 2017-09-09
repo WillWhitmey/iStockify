@@ -1,24 +1,32 @@
 {{#each stocks as |stock|}}
-  <div class="mdl-card mdl-shadow--4dp">
-    <div class="mdl-card__title">
-       <h2 class="mdl-card__title-text">{{stock.name}}</h2>
+  {{#link-to "home.stock" stock.id}}
+    <div class="mdl-card mdl-shadow--4dp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">{{stock.name}}</h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <div class="price">
+          <h4>${{stock.price}}</h4>
+          <span>^ 15% from yesterday</span>
+        </div>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <span class="line">5,3,9,6,5,9,7,3,5,2</span>
+      </div>
     </div>
-    <div class="mdl-card__media">
-      <img src="{{stock.image}}" width="173" height="157" border="0" alt=""
-       style="padding:10px;">
-    </div>
-    <div class="mdl-card__supporting-text">
-      {{stock.price}}
-    </div>
-    <div class="mdl-card__actions mdl-card--border">
-      {{#link-to "home.stock" stock.id class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"}}
-        Full Display
-      {{/link-to}}
-    </div>
-    <div class="mdl-card__menu">
-      <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-        <i class="material-icons">expand_more</i>
-      </button>
-    </div>
-  </div>
+  {{/link-to}}
 {{/each}}
+
+<script type="text/javascript">
+  $.fn.peity.defaults.line = {
+    delimiter: ",",
+    fill: "#c6d9fd",
+    height: 35,
+    max: null,
+    min: 0,
+    stroke: "#4d89f9",
+    strokeWidth: 1,
+    width: 295
+  }
+  $(".line").peity("line")
+</script>

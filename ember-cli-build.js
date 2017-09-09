@@ -9,6 +9,9 @@ module.exports = function(defaults) {
     emberHighCharts: {
       includeHighCharts: false,
       includeHighStock: true
+    },
+    sassOptions: {
+      extension: 'scss'
     }
   });
 

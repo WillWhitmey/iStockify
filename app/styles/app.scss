@@ -1,0 +1,82 @@
+.mdl-card {
+  display: inline-block;
+  margin-left: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+
+  .mdl-card__supporting-text {
+
+  }
+}
+
+.mdl-layout {
+  position: inherit;
+}
+body {
+  height: 100%;
+  background-color: #F7F7F7;
+}
+
+.mdl-layout__header {
+  background-color: #F2F2F2;
+}
+
+.mdl-card__title {
+  flex-direction: column;
+  align-self: center;
+  padding-bottom: 0;
+
+  .mdl-card__title-text {
+    align-self: center;
+  }
+}
+
+.mdl-card__supporting-text {
+  flex-direction: column;
+  align-self: center;
+
+  .price {
+    align-self: center;
+    text-align: center;
+    padding-top: 0;
+
+    h4 {
+      margin-top: 0;
+    }
+  }
+}
+
+.mdl-layout__drawer {
+  background-color: #10404E;
+  color: white;
+  width: auto;
+}
+
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
+  color: white;
+  padding: 12px 30px;
+}
+
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
+  background-color: #173643;
+}
+
+.mdl-layout__drawer>.mdl-layout__title, .mdl-layout__drawer>.mdl-layout-title {
+  padding: 12px 30px;
+}
+
+.mdl-layout--fixed-drawer>.mdl-layout__content {
+  margin-left: 90px;
+}
+
+.mdl-layout--fixed-drawer.is-upgraded:not(.is-small-screen)>.mdl-layout__header {
+  margin-left: 0;
+  width: 100%;
+}
+
+.add-stock {
+  position:absolute;
+  z-index: 1;
+  bottom: 5%;
+  right: 5%;
+}
